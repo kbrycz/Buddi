@@ -1,5 +1,4 @@
 import SwiftUI
-
 struct ListView: View {
     @ObservedObject var viewModel: ListViewModel
     @State private var showingAddBuddiPopup = false
@@ -9,17 +8,17 @@ struct ListView: View {
         NavigationView {
             List {
                 ForEach(viewModel.buddis) { buddi in
-                    HStack {
-                        Text(buddi.name)
-                        Spacer()
-                        Image(systemName: "chevron.right")
-                            .foregroundColor(.gray)
+                    NavigationLink(destination: BuddiListView(buddi: buddi)) {
+                        HStack {
+                            Text(buddi.name)
+                            Spacer()
+                        }
                     }
                 }
                 .onMove(perform: move)
             }
             .navigationBarItems(trailing: addButton)
-            .navigationBarTitle("Buddis", displayMode: .inline)
+            .navigationBarTitle("Buddies", displayMode: .inline)
             .sheet(isPresented: $showingAddBuddiPopup, content: addBuddiSheet)
         }
     }
@@ -49,6 +48,15 @@ struct ListView: View {
     }
 
     private func move(from source: IndexSet, to destination: Int) {
-        viewModel.buddis.move(fromOffsets: source, toOffset: destination)
+        viewModel.moveBuddis(from: source, to: destination)
+    }
+
+}
+
+struct ListView_Previews: PreviewProvider {
+    static var previews: some View {
+        let viewModel = ListViewModel()
+        ListView(viewModel: viewModel)
     }
 }
+

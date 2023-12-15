@@ -23,8 +23,9 @@
 		F61E9B1E2B2CD9AC00635EB9 /* SettingsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F61E9B1D2B2CD9AC00635EB9 /* SettingsViewModel.swift */; };
 		F61E9B202B2CD9B300635EB9 /* SettingsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F61E9B1F2B2CD9B300635EB9 /* SettingsModel.swift */; };
 		F61E9B222B2CDA3000635EB9 /* BuddiListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F61E9B212B2CDA3000635EB9 /* BuddiListView.swift */; };
-		F61E9B242B2CDA3B00635EB9 /* BuddiViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F61E9B232B2CDA3B00635EB9 /* BuddiViewModel.swift */; };
-		F61E9B262B2CDA4500635EB9 /* BuddiModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F61E9B252B2CDA4500635EB9 /* BuddiModel.swift */; };
+		F61E9B242B2CDA3B00635EB9 /* BuddiListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F61E9B232B2CDA3B00635EB9 /* BuddiListViewModel.swift */; };
+		F61E9B262B2CDA4500635EB9 /* BuddiListModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F61E9B252B2CDA4500635EB9 /* BuddiListModel.swift */; };
+		F61E9B282B2CFB8100635EB9 /* TODO.rtf in Resources */ = {isa = PBXBuildFile; fileRef = F61E9B272B2CFB8100635EB9 /* TODO.rtf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -45,8 +46,9 @@
 		F61E9B1D2B2CD9AC00635EB9 /* SettingsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewModel.swift; sourceTree = "<group>"; };
 		F61E9B1F2B2CD9B300635EB9 /* SettingsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsModel.swift; sourceTree = "<group>"; };
 		F61E9B212B2CDA3000635EB9 /* BuddiListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BuddiListView.swift; sourceTree = "<group>"; };
-		F61E9B232B2CDA3B00635EB9 /* BuddiViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BuddiViewModel.swift; sourceTree = "<group>"; };
-		F61E9B252B2CDA4500635EB9 /* BuddiModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BuddiModel.swift; sourceTree = "<group>"; };
+		F61E9B232B2CDA3B00635EB9 /* BuddiListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BuddiListViewModel.swift; sourceTree = "<group>"; };
+		F61E9B252B2CDA4500635EB9 /* BuddiListModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BuddiListModel.swift; sourceTree = "<group>"; };
+		F61E9B272B2CFB8100635EB9 /* TODO.rtf */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; path = TODO.rtf; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -63,6 +65,7 @@
 		F61E9AEE2B2CD5E600635EB9 = {
 			isa = PBXGroup;
 			children = (
+				F61E9B272B2CFB8100635EB9 /* TODO.rtf */,
 				F61E9AF92B2CD5E600635EB9 /* Buddi */,
 				F61E9AF82B2CD5E600635EB9 /* Products */,
 			);
@@ -116,7 +119,7 @@
 				F61E9B112B2CD96000635EB9 /* ListViewModel.swift */,
 				F61E9B172B2CD97F00635EB9 /* NoteViewModel.swift */,
 				F61E9B1D2B2CD9AC00635EB9 /* SettingsViewModel.swift */,
-				F61E9B232B2CDA3B00635EB9 /* BuddiViewModel.swift */,
+				F61E9B232B2CDA3B00635EB9 /* BuddiListViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -128,7 +131,7 @@
 				F61E9B132B2CD96800635EB9 /* ListModel.swift */,
 				F61E9B192B2CD99000635EB9 /* NoteModel.swift */,
 				F61E9B1F2B2CD9B300635EB9 /* SettingsModel.swift */,
-				F61E9B252B2CDA4500635EB9 /* BuddiModel.swift */,
+				F61E9B252B2CDA4500635EB9 /* BuddiListModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -193,6 +196,7 @@
 			files = (
 				F61E9B022B2CD5E700635EB9 /* Preview Assets.xcassets in Resources */,
 				F61E9AFF2B2CD5E700635EB9 /* Assets.xcassets in Resources */,
+				F61E9B282B2CFB8100635EB9 /* TODO.rtf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -204,10 +208,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				F61E9B0E2B2CD75400635EB9 /* HomeModel.swift in Sources */,
-				F61E9B242B2CDA3B00635EB9 /* BuddiViewModel.swift in Sources */,
+				F61E9B242B2CDA3B00635EB9 /* BuddiListViewModel.swift in Sources */,
 				F61E9AFD2B2CD5E600635EB9 /* HomeView.swift in Sources */,
 				F61E9B182B2CD97F00635EB9 /* NoteViewModel.swift in Sources */,
-				F61E9B262B2CDA4500635EB9 /* BuddiModel.swift in Sources */,
+				F61E9B262B2CDA4500635EB9 /* BuddiListModel.swift in Sources */,
 				F61E9B162B2CD97700635EB9 /* NoteView.swift in Sources */,
 				F61E9B122B2CD96000635EB9 /* ListViewModel.swift in Sources */,
 				F61E9B1A2B2CD99000635EB9 /* NoteModel.swift in Sources */,
