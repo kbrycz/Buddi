@@ -9,9 +9,13 @@ import SwiftUI
 
 @main
 struct BuddiApp: App {
+    // Create an instance of HomeViewModel
+    var viewModel = HomeViewModel()
+
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            // Pass this viewModel instance to HomeView
+            HomeView(viewModel: viewModel)
         }
     }
 }

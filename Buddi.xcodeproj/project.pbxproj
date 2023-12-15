@@ -8,17 +8,45 @@
 
 /* Begin PBXBuildFile section */
 		F61E9AFB2B2CD5E600635EB9 /* BuddiApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = F61E9AFA2B2CD5E600635EB9 /* BuddiApp.swift */; };
-		F61E9AFD2B2CD5E600635EB9 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F61E9AFC2B2CD5E600635EB9 /* ContentView.swift */; };
+		F61E9AFD2B2CD5E600635EB9 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F61E9AFC2B2CD5E600635EB9 /* HomeView.swift */; };
 		F61E9AFF2B2CD5E700635EB9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F61E9AFE2B2CD5E700635EB9 /* Assets.xcassets */; };
 		F61E9B022B2CD5E700635EB9 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F61E9B012B2CD5E700635EB9 /* Preview Assets.xcassets */; };
+		F61E9B0C2B2CD74700635EB9 /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F61E9B0B2B2CD74700635EB9 /* HomeViewModel.swift */; };
+		F61E9B0E2B2CD75400635EB9 /* HomeModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F61E9B0D2B2CD75400635EB9 /* HomeModel.swift */; };
+		F61E9B102B2CD95600635EB9 /* ListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F61E9B0F2B2CD95600635EB9 /* ListView.swift */; };
+		F61E9B122B2CD96000635EB9 /* ListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F61E9B112B2CD96000635EB9 /* ListViewModel.swift */; };
+		F61E9B142B2CD96800635EB9 /* ListModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F61E9B132B2CD96800635EB9 /* ListModel.swift */; };
+		F61E9B162B2CD97700635EB9 /* NoteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F61E9B152B2CD97700635EB9 /* NoteView.swift */; };
+		F61E9B182B2CD97F00635EB9 /* NoteViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F61E9B172B2CD97F00635EB9 /* NoteViewModel.swift */; };
+		F61E9B1A2B2CD99000635EB9 /* NoteModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F61E9B192B2CD99000635EB9 /* NoteModel.swift */; };
+		F61E9B1C2B2CD99D00635EB9 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F61E9B1B2B2CD99D00635EB9 /* SettingsView.swift */; };
+		F61E9B1E2B2CD9AC00635EB9 /* SettingsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F61E9B1D2B2CD9AC00635EB9 /* SettingsViewModel.swift */; };
+		F61E9B202B2CD9B300635EB9 /* SettingsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F61E9B1F2B2CD9B300635EB9 /* SettingsModel.swift */; };
+		F61E9B222B2CDA3000635EB9 /* BuddiListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F61E9B212B2CDA3000635EB9 /* BuddiListView.swift */; };
+		F61E9B242B2CDA3B00635EB9 /* BuddiViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F61E9B232B2CDA3B00635EB9 /* BuddiViewModel.swift */; };
+		F61E9B262B2CDA4500635EB9 /* BuddiModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F61E9B252B2CDA4500635EB9 /* BuddiModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		F61E9AF72B2CD5E600635EB9 /* Buddi.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Buddi.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F61E9AFA2B2CD5E600635EB9 /* BuddiApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BuddiApp.swift; sourceTree = "<group>"; };
-		F61E9AFC2B2CD5E600635EB9 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		F61E9AFC2B2CD5E600635EB9 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		F61E9AFE2B2CD5E700635EB9 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		F61E9B012B2CD5E700635EB9 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		F61E9B0B2B2CD74700635EB9 /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
+		F61E9B0D2B2CD75400635EB9 /* HomeModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeModel.swift; sourceTree = "<group>"; };
+		F61E9B0F2B2CD95600635EB9 /* ListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListView.swift; sourceTree = "<group>"; };
+		F61E9B112B2CD96000635EB9 /* ListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListViewModel.swift; sourceTree = "<group>"; };
+		F61E9B132B2CD96800635EB9 /* ListModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListModel.swift; sourceTree = "<group>"; };
+		F61E9B152B2CD97700635EB9 /* NoteView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteView.swift; sourceTree = "<group>"; };
+		F61E9B172B2CD97F00635EB9 /* NoteViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteViewModel.swift; sourceTree = "<group>"; };
+		F61E9B192B2CD99000635EB9 /* NoteModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteModel.swift; sourceTree = "<group>"; };
+		F61E9B1B2B2CD99D00635EB9 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
+		F61E9B1D2B2CD9AC00635EB9 /* SettingsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewModel.swift; sourceTree = "<group>"; };
+		F61E9B1F2B2CD9B300635EB9 /* SettingsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsModel.swift; sourceTree = "<group>"; };
+		F61E9B212B2CDA3000635EB9 /* BuddiListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BuddiListView.swift; sourceTree = "<group>"; };
+		F61E9B232B2CDA3B00635EB9 /* BuddiViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BuddiViewModel.swift; sourceTree = "<group>"; };
+		F61E9B252B2CDA4500635EB9 /* BuddiModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BuddiModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -51,8 +79,10 @@
 		F61E9AF92B2CD5E600635EB9 /* Buddi */ = {
 			isa = PBXGroup;
 			children = (
+				F61E9B0A2B2CD6FF00635EB9 /* Model */,
+				F61E9B092B2CD6FA00635EB9 /* ViewModel */,
+				F61E9B082B2CD6F400635EB9 /* View */,
 				F61E9AFA2B2CD5E600635EB9 /* BuddiApp.swift */,
-				F61E9AFC2B2CD5E600635EB9 /* ContentView.swift */,
 				F61E9AFE2B2CD5E700635EB9 /* Assets.xcassets */,
 				F61E9B002B2CD5E700635EB9 /* Preview Content */,
 			);
@@ -65,6 +95,42 @@
 				F61E9B012B2CD5E700635EB9 /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		F61E9B082B2CD6F400635EB9 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				F61E9AFC2B2CD5E600635EB9 /* HomeView.swift */,
+				F61E9B0F2B2CD95600635EB9 /* ListView.swift */,
+				F61E9B152B2CD97700635EB9 /* NoteView.swift */,
+				F61E9B1B2B2CD99D00635EB9 /* SettingsView.swift */,
+				F61E9B212B2CDA3000635EB9 /* BuddiListView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		F61E9B092B2CD6FA00635EB9 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				F61E9B0B2B2CD74700635EB9 /* HomeViewModel.swift */,
+				F61E9B112B2CD96000635EB9 /* ListViewModel.swift */,
+				F61E9B172B2CD97F00635EB9 /* NoteViewModel.swift */,
+				F61E9B1D2B2CD9AC00635EB9 /* SettingsViewModel.swift */,
+				F61E9B232B2CDA3B00635EB9 /* BuddiViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		F61E9B0A2B2CD6FF00635EB9 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				F61E9B0D2B2CD75400635EB9 /* HomeModel.swift */,
+				F61E9B132B2CD96800635EB9 /* ListModel.swift */,
+				F61E9B192B2CD99000635EB9 /* NoteModel.swift */,
+				F61E9B1F2B2CD9B300635EB9 /* SettingsModel.swift */,
+				F61E9B252B2CDA4500635EB9 /* BuddiModel.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -137,8 +203,22 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F61E9AFD2B2CD5E600635EB9 /* ContentView.swift in Sources */,
+				F61E9B0E2B2CD75400635EB9 /* HomeModel.swift in Sources */,
+				F61E9B242B2CDA3B00635EB9 /* BuddiViewModel.swift in Sources */,
+				F61E9AFD2B2CD5E600635EB9 /* HomeView.swift in Sources */,
+				F61E9B182B2CD97F00635EB9 /* NoteViewModel.swift in Sources */,
+				F61E9B262B2CDA4500635EB9 /* BuddiModel.swift in Sources */,
+				F61E9B162B2CD97700635EB9 /* NoteView.swift in Sources */,
+				F61E9B122B2CD96000635EB9 /* ListViewModel.swift in Sources */,
+				F61E9B1A2B2CD99000635EB9 /* NoteModel.swift in Sources */,
+				F61E9B102B2CD95600635EB9 /* ListView.swift in Sources */,
+				F61E9B142B2CD96800635EB9 /* ListModel.swift in Sources */,
+				F61E9B0C2B2CD74700635EB9 /* HomeViewModel.swift in Sources */,
 				F61E9AFB2B2CD5E600635EB9 /* BuddiApp.swift in Sources */,
+				F61E9B1C2B2CD99D00635EB9 /* SettingsView.swift in Sources */,
+				F61E9B1E2B2CD9AC00635EB9 /* SettingsViewModel.swift in Sources */,
+				F61E9B202B2CD9B300635EB9 /* SettingsModel.swift in Sources */,
+				F61E9B222B2CDA3000635EB9 /* BuddiListView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
