@@ -26,6 +26,13 @@
 		F61E9B242B2CDA3B00635EB9 /* BuddiListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F61E9B232B2CDA3B00635EB9 /* BuddiListViewModel.swift */; };
 		F61E9B262B2CDA4500635EB9 /* BuddiListModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F61E9B252B2CDA4500635EB9 /* BuddiListModel.swift */; };
 		F61E9B282B2CFB8100635EB9 /* TODO.rtf in Resources */ = {isa = PBXBuildFile; fileRef = F61E9B272B2CFB8100635EB9 /* TODO.rtf */; };
+		F6E163A52B71D0EB00DF2DB3 /* AppIconBuddi.jpg in Resources */ = {isa = PBXBuildFile; fileRef = F6E163A42B71D0EB00DF2DB3 /* AppIconBuddi.jpg */; };
+		F6E163A72B71D19100DF2DB3 /* main.png in Resources */ = {isa = PBXBuildFile; fileRef = F6E163A62B71D19100DF2DB3 /* main.png */; };
+		F6E163AA2B71D21F00DF2DB3 /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6E163A92B71D21F00DF2DB3 /* Color.swift */; };
+		F6E163B52B71D79800DF2DB3 /* Quicksand-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = F6E163B22B71D61000DF2DB3 /* Quicksand-Bold.ttf */; };
+		F6E163B62B71D79A00DF2DB3 /* Quicksand-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = F6E163B32B71D61000DF2DB3 /* Quicksand-Medium.ttf */; };
+		F6E163B72B71D79D00DF2DB3 /* Quicksand-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = F6E163B12B71D61000DF2DB3 /* Quicksand-Regular.ttf */; };
+		F6E163BA2B71D8A100DF2DB3 /* SplashScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6E163B92B71D8A100DF2DB3 /* SplashScreenView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -49,6 +56,14 @@
 		F61E9B232B2CDA3B00635EB9 /* BuddiListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BuddiListViewModel.swift; sourceTree = "<group>"; };
 		F61E9B252B2CDA4500635EB9 /* BuddiListModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BuddiListModel.swift; sourceTree = "<group>"; };
 		F61E9B272B2CFB8100635EB9 /* TODO.rtf */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; path = TODO.rtf; sourceTree = "<group>"; };
+		F6E163A42B71D0EB00DF2DB3 /* AppIconBuddi.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = AppIconBuddi.jpg; path = "../../../App Store/AppIconBuddi.jpg"; sourceTree = "<group>"; };
+		F6E163A62B71D19100DF2DB3 /* main.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = main.png; path = ../../../../Downloads/main.png; sourceTree = "<group>"; };
+		F6E163A92B71D21F00DF2DB3 /* Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
+		F6E163B12B71D61000DF2DB3 /* Quicksand-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Quicksand-Regular.ttf"; sourceTree = "<group>"; };
+		F6E163B22B71D61000DF2DB3 /* Quicksand-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Quicksand-Bold.ttf"; sourceTree = "<group>"; };
+		F6E163B32B71D61000DF2DB3 /* Quicksand-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Quicksand-Medium.ttf"; sourceTree = "<group>"; };
+		F6E163B42B71D64600DF2DB3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		F6E163B92B71D8A100DF2DB3 /* SplashScreenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashScreenView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -82,11 +97,18 @@
 		F61E9AF92B2CD5E600635EB9 /* Buddi */ = {
 			isa = PBXGroup;
 			children = (
+				F6E163B42B71D64600DF2DB3 /* Info.plist */,
+				F6E163A82B71D21700DF2DB3 /* Design */,
 				F61E9B0A2B2CD6FF00635EB9 /* Model */,
 				F61E9B092B2CD6FA00635EB9 /* ViewModel */,
 				F61E9B082B2CD6F400635EB9 /* View */,
 				F61E9AFA2B2CD5E600635EB9 /* BuddiApp.swift */,
 				F61E9AFE2B2CD5E700635EB9 /* Assets.xcassets */,
+				F6E163B22B71D61000DF2DB3 /* Quicksand-Bold.ttf */,
+				F6E163B32B71D61000DF2DB3 /* Quicksand-Medium.ttf */,
+				F6E163B12B71D61000DF2DB3 /* Quicksand-Regular.ttf */,
+				F6E163A62B71D19100DF2DB3 /* main.png */,
+				F6E163A42B71D0EB00DF2DB3 /* AppIconBuddi.jpg */,
 				F61E9B002B2CD5E700635EB9 /* Preview Content */,
 			);
 			path = Buddi;
@@ -108,6 +130,7 @@
 				F61E9B152B2CD97700635EB9 /* NoteView.swift */,
 				F61E9B1B2B2CD99D00635EB9 /* SettingsView.swift */,
 				F61E9B212B2CDA3000635EB9 /* BuddiListView.swift */,
+				F6E163B92B71D8A100DF2DB3 /* SplashScreenView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -134,6 +157,14 @@
 				F61E9B252B2CDA4500635EB9 /* BuddiListModel.swift */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		F6E163A82B71D21700DF2DB3 /* Design */ = {
+			isa = PBXGroup;
+			children = (
+				F6E163A92B71D21F00DF2DB3 /* Color.swift */,
+			);
+			path = Design;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -195,6 +226,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				F61E9B022B2CD5E700635EB9 /* Preview Assets.xcassets in Resources */,
+				F6E163B52B71D79800DF2DB3 /* Quicksand-Bold.ttf in Resources */,
+				F6E163B62B71D79A00DF2DB3 /* Quicksand-Medium.ttf in Resources */,
+				F6E163B72B71D79D00DF2DB3 /* Quicksand-Regular.ttf in Resources */,
+				F6E163A72B71D19100DF2DB3 /* main.png in Resources */,
+				F6E163A52B71D0EB00DF2DB3 /* AppIconBuddi.jpg in Resources */,
 				F61E9AFF2B2CD5E700635EB9 /* Assets.xcassets in Resources */,
 				F61E9B282B2CFB8100635EB9 /* TODO.rtf in Resources */,
 			);
@@ -211,12 +247,14 @@
 				F61E9B242B2CDA3B00635EB9 /* BuddiListViewModel.swift in Sources */,
 				F61E9AFD2B2CD5E600635EB9 /* HomeView.swift in Sources */,
 				F61E9B182B2CD97F00635EB9 /* NoteViewModel.swift in Sources */,
+				F6E163AA2B71D21F00DF2DB3 /* Color.swift in Sources */,
 				F61E9B262B2CDA4500635EB9 /* BuddiListModel.swift in Sources */,
 				F61E9B162B2CD97700635EB9 /* NoteView.swift in Sources */,
 				F61E9B122B2CD96000635EB9 /* ListViewModel.swift in Sources */,
 				F61E9B1A2B2CD99000635EB9 /* NoteModel.swift in Sources */,
 				F61E9B102B2CD95600635EB9 /* ListView.swift in Sources */,
 				F61E9B142B2CD96800635EB9 /* ListModel.swift in Sources */,
+				F6E163BA2B71D8A100DF2DB3 /* SplashScreenView.swift in Sources */,
 				F61E9B0C2B2CD74700635EB9 /* HomeViewModel.swift in Sources */,
 				F61E9AFB2B2CD5E600635EB9 /* BuddiApp.swift in Sources */,
 				F61E9B1C2B2CD99D00635EB9 /* SettingsView.swift in Sources */,
@@ -354,6 +392,7 @@
 				DEVELOPMENT_TEAM = TW65Z2CGW7;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = Buddi/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -383,6 +422,7 @@
 				DEVELOPMENT_TEAM = TW65Z2CGW7;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = Buddi/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;

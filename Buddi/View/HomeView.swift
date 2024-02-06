@@ -8,45 +8,53 @@ struct HomeView: View {
         NavigationView {
             VStack {
                 Text("Buddi")
-                    .font(.largeTitle)
-                    .padding(.top, 20)
+                    .font(.custom("Quicksand-Bold", size: 40))
+                    .foregroundColor(.customText) // Custom text color
+                    .padding(.top, 40)
+                    .padding(.bottom, 5)
 
                 Text("Organize your relationships")
-                    .font(.title3)
-                    .padding(.top, 10)
+                    .font(.custom("Quicksand-Medium", size: 20))
+                    .foregroundColor(.customText) // Custom text color
 
                 Spacer() // This will push all content to the top
 
-                Image("yourImageName") // Replace with your image name
+                Image("main") // Replace with your image name
                     .resizable()
                     .scaledToFit()
-                    .frame(width: 100, height: 100) // Adjust size as needed
-                    .padding(.top, 20)
+                    .padding(.horizontal)
+                    .padding(.horizontal) // Add padding on both sides
 
                 Spacer() // This adds space between the image and the buttons
 
-                NavigationLink(destination:
-                                ListView(viewModel: listViewModel)) {
+                // Take Notes Button
+                NavigationLink(destination: ListView(viewModel: listViewModel)) {
                     Text("Take Notes")
                         .padding()
                         .frame(maxWidth: .infinity)
-                        .background(Color.blue)
-                        .foregroundColor(Color.white)
+                        .background(Color.customText) // Custom button color
+                        .foregroundColor(.customBackground) // For better contrast
                         .cornerRadius(10)
+                        .shadow(radius: 5) // Add subtle shadow
+                        .font(.custom("Quicksand-Medium", size: 18))
                 }
                 .padding(.horizontal, 20)
 
+                // Settings Button
                 NavigationLink(destination: SettingsView()) {
                     Text("Settings")
                         .padding()
                         .frame(maxWidth: .infinity)
-                        .background(Color.gray)
-                        .foregroundColor(Color.white)
+                        .background(Color.buttonGray) // Custom button color
+                        .foregroundColor(.customText) // For better contrast
                         .cornerRadius(10)
+                        .shadow(radius: 5) // Add subtle shadow
+                        .font(.custom("Quicksand-Medium", size: 18))
                 }
                 .padding(.horizontal, 20)
                 .padding(.bottom, 20)
             }
+            .background(Color.customBackground.edgesIgnoringSafeArea(.all)) // Set background color
         }
     }
 }
