@@ -3,6 +3,23 @@ import SwiftUI
 struct HomeView: View {
     @ObservedObject var viewModel: HomeViewModel
     let listViewModel = ListViewModel()
+    
+    init(viewModel: HomeViewModel) {
+        self.viewModel = viewModel
+        
+        // Use UINavigationBarAppearance to change the navigation bar color
+        let appearance = UINavigationBarAppearance()
+        appearance.configureWithOpaqueBackground()
+        appearance.backgroundColor = UIColor(Color.customBackground) // Set your custom color
+        appearance.titleTextAttributes = [.foregroundColor: UIColor(Color.customText)] // Set title color
+        appearance.largeTitleTextAttributes = [.foregroundColor: UIColor(Color.customText)] // Set large title color
+        
+        
+        // Apply the appearance to the navigation bar
+        UINavigationBar.appearance().standardAppearance = appearance
+        UINavigationBar.appearance().compactAppearance = appearance // For iPhone small navigation bar in landscape
+        UINavigationBar.appearance().scrollEdgeAppearance = appearance // For large title navigation bar
+    }
 
     var body: some View {
         NavigationView {
@@ -56,6 +73,7 @@ struct HomeView: View {
             }
             .background(Color.customBackground.edgesIgnoringSafeArea(.all)) // Set background color
         }
+        .accentColor(Color.customText)
     }
 }
 

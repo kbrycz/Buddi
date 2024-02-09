@@ -16,6 +16,8 @@ extension Color {
     }
 
     static let customBackground = Color(hex: "2f3640")
+    static let customBackgroundDarker = Color(hex: "282e36")
+    static let customBackgroundDarkest = Color(hex: "21252c")
     static let customText = Color(red: 240 / 255, green: 240 / 255, blue: 234 / 255)
     static let customTextLighter = Color(red: 240 / 255, green: 240 / 255, blue: 234 / 255).opacity(0.7)
     static let buttonGray = Color.gray.opacity(0.7)
