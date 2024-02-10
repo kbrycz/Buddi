@@ -1,7 +1,7 @@
 import SwiftUI
 
 struct NoteView: View {
-    var noteTitle: String
+    var group: Group
     @State private var todoItems: [String] = []
     @State private var newItem: String = ""
 
@@ -16,7 +16,7 @@ struct NoteView: View {
             }
             .listStyle(PlainListStyle())
         }
-        .navigationBarTitle(noteTitle, displayMode: .inline)
+        .navigationBarTitle(group.title, displayMode: .inline)
     }
 
     private func addNewItem() {
@@ -29,6 +29,6 @@ struct NoteView: View {
 
 struct NoteView_Previews: PreviewProvider {
     static var previews: some View {
-        NoteView(noteTitle: "Sample Note")
+        NoteView(group: Group(updatedDate: Date(), title: "Text", items: []))
     }
 }

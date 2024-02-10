@@ -1,8 +1,11 @@
-//
-//  SettingsViewModel.swift
-//  Buddi
-//
-//  Created by Karl Brycz on 12/15/23.
-//
-
 import Foundation
+
+class SettingsViewModel: ObservableObject {
+    func saveData() {
+        // Implement data saving functionality
+    }
+
+    func importData() {
+        // Implement data importing functionality
+    }
+}

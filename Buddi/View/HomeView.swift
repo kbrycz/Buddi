@@ -2,7 +2,8 @@ import SwiftUI
 
 struct HomeView: View {
     @ObservedObject var viewModel: HomeViewModel
-    let listViewModel = ListViewModel()
+    @EnvironmentObject var listViewModel: ListViewModel
+    let settingsViewModel = SettingsViewModel()
     
     init(viewModel: HomeViewModel) {
         self.viewModel = viewModel
@@ -13,6 +14,7 @@ struct HomeView: View {
         appearance.backgroundColor = UIColor(Color.customBackground) // Set your custom color
         appearance.titleTextAttributes = [.foregroundColor: UIColor(Color.customText)] // Set title color
         appearance.largeTitleTextAttributes = [.foregroundColor: UIColor(Color.customText)] // Set large title color
+        appearance.titleTextAttributes = [.font: UIFont(name: "Quicksand-Bold", size: 18)!, .foregroundColor: UIColor(Color.customText)]
         
         
         // Apply the appearance to the navigation bar
@@ -45,7 +47,7 @@ struct HomeView: View {
                 Spacer() // This adds space between the image and the buttons
 
                 // Take Notes Button
-                NavigationLink(destination: ListView(viewModel: listViewModel)) {
+                NavigationLink(destination: ListView()) {
                     Text("Take Notes")
                         .padding()
                         .frame(maxWidth: .infinity)
@@ -58,7 +60,7 @@ struct HomeView: View {
                 .padding(.horizontal, 20)
 
                 // Settings Button
-                NavigationLink(destination: SettingsView()) {
+                NavigationLink(destination: SettingsView(viewModel: settingsViewModel)) {
                     Text("Settings")
                         .padding()
                         .frame(maxWidth: .infinity)

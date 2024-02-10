@@ -1,16 +1,10 @@
 import SwiftUI
 
 struct BuddiListView: View {
-    var buddi: Buddi
-    @ObservedObject var viewModel: BuddiListViewModel
-    @State private var showingAddNotePopup = false
-    @State private var newNoteName = ""
-
-    init(buddi: Buddi) {
-        self.buddi = buddi
-        self.viewModel = BuddiListViewModel()
-        // Load notes for this specific Buddi here if needed
-    }
+    @Binding var buddi: Buddi
+    @EnvironmentObject var listViewModel: ListViewModel // Assuming this is how you access your parent VM
+    @State private var showingAddGroupPopup = false
+    @State private var newGroupName = ""
 
     var body: some View {
         ZStack {
@@ -18,10 +12,10 @@ struct BuddiListView: View {
 
             ScrollView {
                 LazyVStack(spacing: 10) {
-                    ForEach(viewModel.notes, id: \.self) { note in
-                        NavigationLink(destination: NoteView(noteTitle: note)) {
+                    ForEach(buddi.groups) { group in
+                        NavigationLink(destination: NoteView(group: group)) {
                             HStack {
-                                Text(note)
+                                Text(group.title)
                                     .foregroundColor(.customText)
                                 Spacer()
                                 Image(systemName: "chevron.right")
@@ -39,7 +33,7 @@ struct BuddiListView: View {
         }
         .navigationBarTitle(buddi.name, displayMode: .inline)
         .navigationBarItems(trailing: addButton)
-        .sheet(isPresented: $showingAddNotePopup) {
+        .sheet(isPresented: $showingAddGroupPopup) {
             ZStack {
                 Color.customBackgroundDarker // This will add a dark overlay to your image
                     .opacity(1) // Adjust the opacity as needed
@@ -56,9 +50,11 @@ struct BuddiListView: View {
         .accentColor(Color.customText)
     }
 
+
+
     private var addButton: some View {
         Button(action: {
-            showingAddNotePopup = true
+            showingAddGroupPopup = true
         }) {
             Image(systemName: "plus")
                 .foregroundColor(.customText)
@@ -67,18 +63,20 @@ struct BuddiListView: View {
 
     private func addNoteSheet() -> some View {
         VStack {
-            TextField("", text: $newNoteName, prompt: Text("Enter note here").foregroundColor(.customText.opacity(0.5)))
+            TextField("", text: $newGroupName, prompt: Text("Group title").foregroundColor(.customText.opacity(0.5)))
                 .padding()
                 .background(Color.customBackground) // Make text field background the darker color
                 .foregroundColor(.customText) // Set the text field text color to the light color
                 .cornerRadius(5)
                 .padding(.horizontal)
 
-            Button("Add Note") {
-                viewModel.addNote(name: newNoteName)
-                newNoteName = ""
-                showingAddNotePopup = false
+            Button("Add Group") {
+                let newGroup = Group(updatedDate: Date(), title: newGroupName, items: [])
+                listViewModel.addGroup(toBuddiWithID: buddi.id, newGroup: newGroup)
+                newGroupName = ""
+                showingAddGroupPopup = false // Consider keeping or removing based on further testing
             }
+
             .padding()
             .frame(maxWidth: .infinity)
             .background(Color.customBackgroundDarkest) // Make button background the darker color
@@ -92,7 +90,7 @@ struct BuddiListView: View {
 
 struct BuddiListView_Previews: PreviewProvider {
     static var previews: some View {
-        let buddi = Buddi(name: "Karl")
-        BuddiListView(buddi: buddi)
+        let buddi = Buddi(name: "Karl", groups: [Group(updatedDate: Date(), title: "Group 1", items: [Item(text: "Test 1")])])
+        BuddiListView(buddi: .constant(buddi))
     }
 }

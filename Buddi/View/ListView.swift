@@ -1,7 +1,7 @@
 import SwiftUI
 
 struct ListView: View {
-    @ObservedObject var viewModel: ListViewModel
+    @EnvironmentObject var viewModel: ListViewModel // Assuming this is how you access your parent VM
     @State private var showingAddBuddiPopup = false
     @State private var newBuddiName = ""
 
@@ -11,10 +11,11 @@ struct ListView: View {
             
             ScrollView {
                 LazyVStack(spacing: 10) { // Add some spacing between items
-                    ForEach(viewModel.buddis) { buddi in
-                        NavigationLink(destination: BuddiListView(buddi: buddi)) {
+                    ForEach(viewModel.buddis.indices, id: \.self) { index in
+                        let buddiBinding = $viewModel.buddis[index]
+                        NavigationLink(destination: BuddiListView(buddi: buddiBinding)) {
                             HStack {
-                                Text(buddi.name)
+                                Text(viewModel.buddis[index].name)
                                     .foregroundColor(.customText) // Custom text color
                                 Spacer()
                                 Image(systemName: "chevron.right")
@@ -26,6 +27,7 @@ struct ListView: View {
                             .padding(.horizontal) // Add horizontal padding
                         }
                     }
+
                 }
                 .padding(.top) // Add padding at the top of the list
             }
@@ -92,7 +94,6 @@ struct ListView: View {
 
 struct ListView_Previews: PreviewProvider {
     static var previews: some View {
-        let viewModel = ListViewModel()
-        ListView(viewModel: viewModel)
+        ListView()
     }
 }
