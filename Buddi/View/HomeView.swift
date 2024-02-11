@@ -1,12 +1,10 @@
 import SwiftUI
 
 struct HomeView: View {
-    @ObservedObject var viewModel: HomeViewModel
     @EnvironmentObject var listViewModel: ListViewModel
     let settingsViewModel = SettingsViewModel()
     
-    init(viewModel: HomeViewModel) {
-        self.viewModel = viewModel
+    init() {
         
         // Use UINavigationBarAppearance to change the navigation bar color
         let appearance = UINavigationBarAppearance()
@@ -81,7 +79,6 @@ struct HomeView: View {
 
 struct HomeView_Previews: PreviewProvider {
     static var previews: some View {
-        let viewModel = HomeViewModel()
-        HomeView(viewModel: viewModel)
+        HomeView()
     }
 }
