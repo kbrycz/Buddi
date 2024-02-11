@@ -11,7 +11,7 @@ struct BuddiApp: App {
         WindowGroup {
             ZStack {
                 // Pass this viewModel instance to HomeView
-                HomeView(viewModel: HomeViewModel())
+                HomeView()
                     .environmentObject(listViewModel)
                     .environmentObject(refreshTrigger) // Provide RefreshTrigger to the environment
 

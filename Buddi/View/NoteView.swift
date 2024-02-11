@@ -41,6 +41,9 @@ struct NoteView: View {
                      .onDelete(perform: deleteItem)
                  }
                  .listRowBackground(Color.customBackground) // This ensures each row in the list also has the custom background color
+                 .simultaneousGesture(TapGesture().onEnded { _ in
+                     self.isInputFocused = false
+                 })
              }
              .listStyle(PlainListStyle())
              .background(Color.customBackground.edgesIgnoringSafeArea(.all)) // Apply background color to the List
@@ -58,10 +61,10 @@ struct NoteView: View {
                 self.isInputFocused = true
             }
         }
-        // Tap gesture to dismiss the keyboard
-        .onTapGesture {
-            isInputFocused = false
-        }
+    }
+    
+    private func hideKeyboard() {
+        UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
     }
     
     private func loadItems() {
