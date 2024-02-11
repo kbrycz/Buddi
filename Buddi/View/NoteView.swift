@@ -32,6 +32,9 @@ struct NoteView: View {
                                 .foregroundColor(.customText)
                                 .padding(.top, 3)
                                 .padding(.bottom, 8)
+                            
+                            Divider()
+                                .background(Color.gray.opacity(0.5)) // Slightly faded divider
                         }
                         .background(Color.customBackground)
                      }
@@ -55,6 +58,10 @@ struct NoteView: View {
                 self.isInputFocused = true
             }
         }
+        // Tap gesture to dismiss the keyboard
+        .onTapGesture {
+            isInputFocused = false
+        }
     }
     
     private func loadItems() {
@@ -65,9 +72,13 @@ struct NoteView: View {
         if !newItemText.isEmpty {
             let newItem = Item(text: newItemText)
             listViewModel.addItem(toGroupWithID: group.id, newItem: newItem, inBuddiWithID: buddiId)
-            // Optionally update local state if immediate reflection in UI is needed
-            newItemText = "" // Clear the text field
+            // Optionally update local state if immediate reflection in UI is needed // Clear the text field
             todoItems.insert(newItem, at: 0) // Adds the item to the start of the list
+            // Force the TextField to maintain focus
+            newItemText = ""
+            DispatchQueue.main.asyncAfter(deadline: .now()) {
+                self.isInputFocused = true
+            }
         }
     }
 
