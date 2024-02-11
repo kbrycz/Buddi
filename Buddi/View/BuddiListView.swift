@@ -7,18 +7,33 @@ struct BuddiListView: View {
     @State private var showingAddGroupPopup = false
     @State private var newGroupName = ""
     
+    @State private var showingDeleteAlert = false
+    @State private var indexToDelete: Int? = nil
+    
     init(buddiBinding: Binding<Buddi>) {
         _buddiBinding = buddiBinding
         _localBuddi = State(initialValue: buddiBinding.wrappedValue)
     }
+    
     var body: some View {
         ZStack {
             Color.customBackground.edgesIgnoringSafeArea(.all) // Set the background color for the entire view
 
             ScrollView {
                 LazyVStack(spacing: 10) {
-                    ForEach(localBuddi.groups) { group in
-                        NavigationLink(destination: NoteView(group: group)) {
+                    
+                    if (localBuddi.groups.isEmpty) {
+                        Text("No groups yet... Go add one! Groups help you organize different times you've interacted with a buddi!")
+                            .font(.custom("Quicksand-Medium", size: 16))
+                            .lineSpacing(8.0)
+                            .foregroundColor(.customText) // Custom text color
+                            .padding(.top, 40) // Increased top padding
+                            .padding(.bottom, 40) // Increased top padding
+                            .padding(.horizontal) // Add horizontal padding
+                    }
+                    
+                    ForEach(Array(localBuddi.groups.enumerated()), id: \.element.id) { index, group in
+                        NavigationLink(destination: NoteView(group: group, buddiId: localBuddi.id)) {
                             HStack {
                                 Text(group.title)
                                     .foregroundColor(.customText)
@@ -31,10 +46,30 @@ struct BuddiListView: View {
                             .cornerRadius(10)
                             .padding(.horizontal)
                         }
+                        .simultaneousGesture(LongPressGesture().onEnded { _ in
+                            self.indexToDelete = index
+                            self.showingDeleteAlert = true
+                        })
+                        .alert(isPresented: $showingDeleteAlert) {
+                            Alert(title: Text("Delete \(localBuddi.groups[indexToDelete ?? 0].title)?"), message: Text("This action cannot be undone."), primaryButton: .destructive(Text("Delete")) {
+                                if let indexToDelete = self.indexToDelete {
+                                    // Perform deletion
+                                    localBuddi.groups.remove(at: indexToDelete)
+                                    // Update buddiBinding to reflect changes
+                                    buddiBinding = localBuddi
+                                    // Optionally, call a method to handle the deletion in your view model
+                                    listViewModel.saveBuddis()
+                                }
+                            }, secondaryButton: .cancel())
+                        }
                     }
                 }
                 .padding(.top)
             }
+        }
+        .onAppear {
+            // Assuming you have a method in your ViewModel to fetch the latest data
+            self.refreshLocalBuddiData()
         }
         .navigationBarTitle(localBuddi.name, displayMode: .inline)
         .navigationBarItems(trailing: addButton)
@@ -56,7 +91,14 @@ struct BuddiListView: View {
     }
 
 
-
+    // Local function within BuddiListView
+    func refreshLocalBuddiData() {
+        // Fetch the latest data for the current buddi and update localBuddi
+        if let updatedBuddi = listViewModel.fetchBuddiById(localBuddi.id) {
+            self.localBuddi = updatedBuddi
+            self.buddiBinding = localBuddi
+        }
+    }
 
     private var addButton: some View {
         Button(action: {

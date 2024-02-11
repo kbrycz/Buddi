@@ -5,6 +5,8 @@ struct ListView: View {
     @State private var showingAddBuddiPopup = false
     @State private var newBuddiName = ""
     @EnvironmentObject var refreshTrigger: RefreshTrigger // Assuming you inject this environment object
+    @State private var showingDeleteAlert = false
+    @State private var indexToDelete: Int? = nil
 
 
     var body: some View {
@@ -13,6 +15,17 @@ struct ListView: View {
             
             ScrollView {
                 LazyVStack(spacing: 10) { // Add some spacing between items
+                    
+                    if (viewModel.buddis.isEmpty) {
+                        Text("No buddies yet... Go add one!")
+                            .font(.custom("Quicksand-Medium", size: 16))
+                            .lineSpacing(8.0)
+                            .foregroundColor(.customText) // Custom text color
+                            .padding(.top, 40) // Increased top padding
+                            .padding(.bottom, 40) // Increased top padding
+                            .padding(.horizontal) // Add horizontal padding
+                    }
+                    
                     ForEach(viewModel.buddis.indices, id: \.self) { index in
                         let buddiBinding = $viewModel.buddis[index]
                         NavigationLink(destination: BuddiListView(buddiBinding: buddiBinding)) {
@@ -28,6 +41,17 @@ struct ListView: View {
                             .cornerRadius(10)
                             .padding(.horizontal) // Add horizontal padding
                         }
+                        .simultaneousGesture(LongPressGesture().onEnded { _ in
+                            self.indexToDelete = index
+                            self.showingDeleteAlert = true
+                        })
+                        .alert(isPresented: $showingDeleteAlert) {
+                            Alert(title: Text("Delete \(viewModel.buddis[indexToDelete ?? 0].name)?"), message: Text("This action cannot be undone."), primaryButton: .destructive(Text("Delete")) {
+                                if let indexToDelete = self.indexToDelete {
+                                    viewModel.deleteBuddi(at: indexToDelete)
+                                }
+                            }, secondaryButton: .cancel())
+                        }
                     }
 
                 }
@@ -35,10 +59,7 @@ struct ListView: View {
             }
         }
         .onAppear() {
-            print("Hello")
-//            viewModel.loadBuddis()
             refreshTrigger.refresh.toggle()
-
         }
         .navigationBarItems(trailing: addButton)
         .navigationBarTitle("Buddies", displayMode: .inline)

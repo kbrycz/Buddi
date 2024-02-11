@@ -20,7 +20,7 @@ struct Group : Identifiable, Codable {
     var items : [Item]
 }
 
-struct Item : Identifiable, Codable {
+struct Item : Identifiable, Codable, Hashable {
     var id = UUID()
     var text: String
 }
