@@ -1,20 +1,13 @@
 import Foundation
 import Combine
+import SwiftUI
 
 class ListViewModel: ObservableObject {
-    @Published var buddis: [Buddi] = []
+    var buddis: [Buddi] = []
     private var cancellables = Set<AnyCancellable>()
 
     init() {
         loadBuddis()
-        
-        $buddis
-            .dropFirst() // Avoid triggering on initial load
-            .debounce(for: 0.5, scheduler: RunLoop.main) // Debounce to minimize save operations
-            .sink { [weak self] _ in
-                self?.saveBuddis()
-            }
-            .store(in: &cancellables)
     }
 
     func addBuddi(name: String) {
@@ -28,7 +21,7 @@ class ListViewModel: ObservableObject {
         saveBuddis()
     }
 
-    private func loadBuddis() {
+    func loadBuddis() {
         if let data = UserDefaults.standard.data(forKey: "buddis"),
            let savedBuddis = try? JSONDecoder().decode([Buddi].self, from: data) {
             buddis = savedBuddis
@@ -43,8 +36,9 @@ class ListViewModel: ObservableObject {
     
     func addGroup(toBuddiWithID buddiID: UUID, newGroup: Group) {
         if let index = buddis.firstIndex(where: { $0.id == buddiID }) {
-            buddis[index].groups.append(newGroup)
+            buddis[index].groups.insert(newGroup, at: 0)
             saveBuddis()
+            print(buddis[index])
         }
     }
     

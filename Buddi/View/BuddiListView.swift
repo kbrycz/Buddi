@@ -1,18 +1,23 @@
 import SwiftUI
 
 struct BuddiListView: View {
-    @Binding var buddi: Buddi
+    @Binding var buddiBinding: Buddi
+    @State private var localBuddi: Buddi
     @EnvironmentObject var listViewModel: ListViewModel // Assuming this is how you access your parent VM
     @State private var showingAddGroupPopup = false
     @State private var newGroupName = ""
-
+    
+    init(buddiBinding: Binding<Buddi>) {
+        _buddiBinding = buddiBinding
+        _localBuddi = State(initialValue: buddiBinding.wrappedValue)
+    }
     var body: some View {
         ZStack {
             Color.customBackground.edgesIgnoringSafeArea(.all) // Set the background color for the entire view
 
             ScrollView {
                 LazyVStack(spacing: 10) {
-                    ForEach(buddi.groups) { group in
+                    ForEach(localBuddi.groups) { group in
                         NavigationLink(destination: NoteView(group: group)) {
                             HStack {
                                 Text(group.title)
@@ -31,7 +36,7 @@ struct BuddiListView: View {
                 .padding(.top)
             }
         }
-        .navigationBarTitle(buddi.name, displayMode: .inline)
+        .navigationBarTitle(localBuddi.name, displayMode: .inline)
         .navigationBarItems(trailing: addButton)
         .sheet(isPresented: $showingAddGroupPopup) {
             ZStack {
@@ -52,6 +57,7 @@ struct BuddiListView: View {
 
 
 
+
     private var addButton: some View {
         Button(action: {
             showingAddGroupPopup = true
@@ -60,6 +66,7 @@ struct BuddiListView: View {
                 .foregroundColor(.customText)
         }
     }
+    
 
     private func addNoteSheet() -> some View {
         VStack {
@@ -72,9 +79,11 @@ struct BuddiListView: View {
 
             Button("Add Group") {
                 let newGroup = Group(updatedDate: Date(), title: newGroupName, items: [])
-                listViewModel.addGroup(toBuddiWithID: buddi.id, newGroup: newGroup)
-                newGroupName = ""
-                showingAddGroupPopup = false // Consider keeping or removing based on further testing
+                self.listViewModel.addGroup(toBuddiWithID: self.localBuddi.id, newGroup: newGroup)
+                localBuddi.groups.insert(newGroup, at: 0) // Inserts at the beginning for "top of the list"
+                buddiBinding = localBuddi
+                self.newGroupName = ""
+                self.showingAddGroupPopup = false
             }
 
             .padding()
@@ -91,6 +100,6 @@ struct BuddiListView: View {
 struct BuddiListView_Previews: PreviewProvider {
     static var previews: some View {
         let buddi = Buddi(name: "Karl", groups: [Group(updatedDate: Date(), title: "Group 1", items: [Item(text: "Test 1")])])
-        BuddiListView(buddi: .constant(buddi))
+        BuddiListView(buddiBinding: .constant(buddi))
     }
 }

@@ -4,6 +4,8 @@ struct ListView: View {
     @EnvironmentObject var viewModel: ListViewModel // Assuming this is how you access your parent VM
     @State private var showingAddBuddiPopup = false
     @State private var newBuddiName = ""
+    @EnvironmentObject var refreshTrigger: RefreshTrigger // Assuming you inject this environment object
+
 
     var body: some View {
         ZStack {
@@ -13,7 +15,7 @@ struct ListView: View {
                 LazyVStack(spacing: 10) { // Add some spacing between items
                     ForEach(viewModel.buddis.indices, id: \.self) { index in
                         let buddiBinding = $viewModel.buddis[index]
-                        NavigationLink(destination: BuddiListView(buddi: buddiBinding)) {
+                        NavigationLink(destination: BuddiListView(buddiBinding: buddiBinding)) {
                             HStack {
                                 Text(viewModel.buddis[index].name)
                                     .foregroundColor(.customText) // Custom text color
@@ -31,6 +33,12 @@ struct ListView: View {
                 }
                 .padding(.top) // Add padding at the top of the list
             }
+        }
+        .onAppear() {
+            print("Hello")
+//            viewModel.loadBuddis()
+            refreshTrigger.refresh.toggle()
+
         }
         .navigationBarItems(trailing: addButton)
         .navigationBarTitle("Buddies", displayMode: .inline)
