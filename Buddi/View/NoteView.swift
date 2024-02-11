@@ -50,20 +50,25 @@ struct NoteView: View {
             }
         }
         .onAppear {
+            loadItems()
             DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
                 self.isInputFocused = true
             }
         }
     }
+    
+    private func loadItems() {
+        todoItems = group.items
+    }
 
     private func addNewItem() {
         if !newItemText.isEmpty {
-            listViewModel.addItem(toGroupWithID: group.id, newItemText: newItemText, inBuddiWithID: buddiId)
+            let newItem = Item(text: newItemText)
+            listViewModel.addItem(toGroupWithID: group.id, newItem: newItem, inBuddiWithID: buddiId)
             // Optionally update local state if immediate reflection in UI is needed
             newItemText = "" // Clear the text field
+            todoItems.insert(newItem, at: 0) // Adds the item to the start of the list
         }
-        let newItem = Item(id: UUID(), text: newItemText)
-        todoItems.insert(newItem, at: 0) // Adds the item to the start of the list
     }
 
     private func deleteItem(at offsets: IndexSet) {

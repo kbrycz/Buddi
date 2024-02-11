@@ -52,13 +52,12 @@ class ListViewModel: ObservableObject {
     }
 
     // Adds an item to a specific group within a Buddi
-    func addItem(toGroupWithID groupId: UUID, newItemText: String, inBuddiWithID buddiID: UUID) {
+    func addItem(toGroupWithID groupId: UUID, newItem: Item, inBuddiWithID buddiID: UUID) {
         guard let buddiIndex = buddis.firstIndex(where: { $0.id == buddiID }),
               let groupIndex = buddis[buddiIndex].groups.firstIndex(where: { $0.id == groupId }) else {
             print("Group or Buddi not found")
             return
         }
-        let newItem = Item(text: newItemText)
         buddis[buddiIndex].groups[groupIndex].items.insert(newItem, at: 0) // Add new item at the start of the list
         saveBuddis()
     }
