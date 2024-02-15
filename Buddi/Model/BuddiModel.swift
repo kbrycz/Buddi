@@ -11,6 +11,7 @@ struct Buddi: Identifiable, Codable {
     var id = UUID()
     var name: String
     var groups : [Group]
+    var lastUpdated : Date = Date()
 }
 
 struct Group : Identifiable, Codable {

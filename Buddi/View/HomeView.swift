@@ -73,6 +73,7 @@ struct HomeView: View {
             }
             .background(Color.customBackground.edgesIgnoringSafeArea(.all)) // Set background color
         }
+        .navigationViewStyle(StackNavigationViewStyle())
         .accentColor(Color.customText)
     }
 }

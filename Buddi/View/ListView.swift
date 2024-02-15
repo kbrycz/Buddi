@@ -32,6 +32,7 @@ struct ListView: View {
                             HStack {
                                 Text(viewModel.buddis[index].name)
                                     .foregroundColor(.customText) // Custom text color
+                                    .font(.custom("Quicksand-Medium", size: 18))
                                 Spacer()
                                 Image(systemName: "chevron.right")
                                     .foregroundColor(.white) // Chevron color
@@ -59,6 +60,7 @@ struct ListView: View {
             }
         }
         .onAppear() {
+            viewModel.loadBuddis()
             refreshTrigger.refresh.toggle()
         }
         .navigationBarItems(trailing: addButton)
@@ -98,12 +100,14 @@ struct ListView: View {
                 .foregroundColor(.customText) // Set the text field text color to the light color
                 .cornerRadius(5)
                 .padding(.horizontal) // Add horizontal padding if needed
+                .font(.custom("Quicksand-Medium", size: 18))
 
             Button("Add Buddi") {
                 viewModel.addBuddi(name: newBuddiName)
                 newBuddiName = ""
                 showingAddBuddiPopup = false
             }
+            .font(.custom("Quicksand-Medium", size: 18))
             .padding()
             .frame(maxWidth: .infinity)
             .background(Color.customBackgroundDarkest) // Make button background the darker color
@@ -112,12 +116,6 @@ struct ListView: View {
             .padding(.horizontal) // Add horizontal padding if needed
         }
         .padding()
-    }
-
-
-
-    private func move(from source: IndexSet, to destination: Int) {
-        viewModel.moveBuddis(from: source, to: destination)
     }
 }
 

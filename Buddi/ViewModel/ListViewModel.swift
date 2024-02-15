@@ -9,22 +9,13 @@ class ListViewModel: ObservableObject {
     init() {
         loadBuddis()
     }
-
-    func addBuddi(name: String) {
-        let newBuddi = Buddi(name: name, groups: [])
-        buddis.insert(newBuddi, at: 0)
-        saveBuddis()
-    }
-
-    func moveBuddis(from source: IndexSet, to destination: Int) {
-        buddis.move(fromOffsets: source, toOffset: destination)
-        saveBuddis()
-    }
-
+    
+    // Load Buddis and sort by lastUpdated
     func loadBuddis() {
         if let data = UserDefaults.standard.data(forKey: "buddis"),
-           let savedBuddis = try? JSONDecoder().decode([Buddi].self, from: data) {
-            buddis = savedBuddis
+           var savedBuddis = try? JSONDecoder().decode([Buddi].self, from: data) {
+            savedBuddis.sort { $0.lastUpdated > $1.lastUpdated } // Sort by most recently updated
+            self.buddis = savedBuddis
         }
     }
 
@@ -33,49 +24,59 @@ class ListViewModel: ObservableObject {
             UserDefaults.standard.set(data, forKey: "buddis")
         }
     }
-    
-    func addGroup(toBuddiWithID buddiID: UUID, newGroup: Group) {
-        if let index = buddis.firstIndex(where: { $0.id == buddiID }) {
-            buddis[index].groups.insert(newGroup, at: 0)
+
+    // Update the lastUpdated field whenever a change is made
+    func updateLastUpdated(forBuddiID id: UUID) {
+        if let index = buddis.firstIndex(where: { $0.id == id }) {
+            buddis[index].lastUpdated = Date()
             saveBuddis()
-            print(buddis[index])
+            loadBuddis() // Reload to apply sorting
         }
     }
-    
+
+    func addBuddi(name: String) {
+        let newBuddi = Buddi(name: name, groups: [])
+        buddis.insert(newBuddi, at: 0)
+        saveBuddis()
+        loadBuddis() // Reload to apply sorting
+    }
+
     func deleteBuddi(at index: Int) {
         buddis.remove(at: index)
         saveBuddis()
+        loadBuddis() // Reload to apply sorting
+    }
+
+    // Assuming you will call this method when adding or removing groups/items to update the lastUpdated
+    func addGroup(toBuddiWithID buddiID: UUID, newGroup: Group) {
+        if let index = buddis.firstIndex(where: { $0.id == buddiID }) {
+            buddis[index].groups.insert(newGroup, at: 0)
+            updateLastUpdated(forBuddiID: buddiID) // Update lastUpdated date
+        }
+    }
+
+    // Update this method to ensure lastUpdated is refreshed when items are added/removed
+    func addItem(toGroupWithID groupId: UUID, newItem: Item, inBuddiWithID buddiID: UUID) {
+        guard let buddiIndex = buddis.firstIndex(where: { $0.id == buddiID }),
+              let groupIndex = buddis[buddiIndex].groups.firstIndex(where: { $0.id == groupId }) else {
+            return
+        }
+        buddis[buddiIndex].groups[groupIndex].items.insert(newItem, at: 0) // Add new item at the start of the list
+        updateLastUpdated(forBuddiID: buddiID) // Update lastUpdated date
+    }
+
+    func removeItem(withItemID itemId: UUID, fromGroupWithID groupId: UUID, inBuddiWithID buddiID: UUID) {
+        guard let buddiIndex = buddis.firstIndex(where: { $0.id == buddiID }),
+              let groupIndex = buddis[buddiIndex].groups.firstIndex(where: { $0.id == groupId }),
+              let itemIndex = buddis[buddiIndex].groups[groupIndex].items.firstIndex(where: { $0.id == itemId }) else {
+            return
+        }
+        buddis[buddiIndex].groups[groupIndex].items.remove(at: itemIndex)
+        updateLastUpdated(forBuddiID: buddiID) // Update lastUpdated date
     }
     
     func fetchBuddiById(_ id: UUID) -> Buddi? {
         return buddis.first { $0.id == id }
     }
-
-    // Adds an item to a specific group within a Buddi
-    func addItem(toGroupWithID groupId: UUID, newItem: Item, inBuddiWithID buddiID: UUID) {
-        guard let buddiIndex = buddis.firstIndex(where: { $0.id == buddiID }),
-              let groupIndex = buddis[buddiIndex].groups.firstIndex(where: { $0.id == groupId }) else {
-            print("Group or Buddi not found")
-            return
-        }
-        buddis[buddiIndex].groups[groupIndex].items.insert(newItem, at: 0) // Add new item at the start of the list
-        saveBuddis()
-    }
-
-    // Removes an item from a specific group within a Buddi
-    func removeItem(withItemID itemId: UUID, fromGroupWithID groupId: UUID, inBuddiWithID buddiID: UUID) {
-        guard let buddiIndex = buddis.firstIndex(where: { $0.id == buddiID }),
-              let groupIndex = buddis[buddiIndex].groups.firstIndex(where: { $0.id == groupId }) else {
-            print("Group or Buddi not found")
-            return
-        }
-        guard let itemIndex = buddis[buddiIndex].groups[groupIndex].items.firstIndex(where: { $0.id == itemId }) else {
-            print("Item not found")
-            return
-        }
-        buddis[buddiIndex].groups[groupIndex].items.remove(at: itemIndex)
-        saveBuddis()
-    }
-
 
 }

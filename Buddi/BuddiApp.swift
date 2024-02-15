@@ -19,7 +19,7 @@ struct BuddiApp: App {
                 if isShowingSplash {
                     SplashScreenView(logoOpacity: $logoOpacity) // Ensure you have this view created
                         .onAppear {
-                            DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) { // Adjust time as needed
+                            DispatchQueue.main.asyncAfter(deadline: .now() + 3) { // Adjust time as needed
                                 withAnimation(.easeInOut(duration: 1)) {
                                     logoOpacity = 0.0
                                     isShowingSplash = false

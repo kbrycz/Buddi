@@ -37,6 +37,7 @@ struct BuddiListView: View {
                             HStack {
                                 Text(group.title)
                                     .foregroundColor(.customText)
+                                    .font(.custom("Quicksand-Medium", size: 18))
                                 Spacer()
                                 Image(systemName: "chevron.right")
                                     .foregroundColor(.white)
@@ -118,6 +119,7 @@ struct BuddiListView: View {
                 .foregroundColor(.customText) // Set the text field text color to the light color
                 .cornerRadius(5)
                 .padding(.horizontal)
+                .font(.custom("Quicksand-Medium", size: 18))
 
             Button("Add Group") {
                 let newGroup = Group(updatedDate: Date(), title: newGroupName, items: [])
@@ -127,7 +129,7 @@ struct BuddiListView: View {
                 self.newGroupName = ""
                 self.showingAddGroupPopup = false
             }
-
+            .font(.custom("Quicksand-Medium", size: 18))
             .padding()
             .frame(maxWidth: .infinity)
             .background(Color.customBackgroundDarkest) // Make button background the darker color
