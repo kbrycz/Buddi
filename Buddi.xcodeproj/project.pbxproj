@@ -18,7 +18,7 @@
 		F61E9B1C2B2CD99D00635EB9 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F61E9B1B2B2CD99D00635EB9 /* SettingsView.swift */; };
 		F61E9B1E2B2CD9AC00635EB9 /* SettingsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F61E9B1D2B2CD9AC00635EB9 /* SettingsViewModel.swift */; };
 		F61E9B222B2CDA3000635EB9 /* BuddiListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F61E9B212B2CDA3000635EB9 /* BuddiListView.swift */; };
-		F61E9B282B2CFB8100635EB9 /* TODO.rtf in Resources */ = {isa = PBXBuildFile; fileRef = F61E9B272B2CFB8100635EB9 /* TODO.rtf */; };
+		F69750462B7EFFD8009FC7F1 /* BuddiFileDocument.swift in Sources */ = {isa = PBXBuildFile; fileRef = F69750452B7EFFD8009FC7F1 /* BuddiFileDocument.swift */; };
 		F6E163A72B71D19100DF2DB3 /* main.png in Resources */ = {isa = PBXBuildFile; fileRef = F6E163A62B71D19100DF2DB3 /* main.png */; };
 		F6E163AA2B71D21F00DF2DB3 /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6E163A92B71D21F00DF2DB3 /* Color.swift */; };
 		F6E163B52B71D79800DF2DB3 /* Quicksand-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = F6E163B22B71D61000DF2DB3 /* Quicksand-Bold.ttf */; };
@@ -40,7 +40,7 @@
 		F61E9B1B2B2CD99D00635EB9 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		F61E9B1D2B2CD9AC00635EB9 /* SettingsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewModel.swift; sourceTree = "<group>"; };
 		F61E9B212B2CDA3000635EB9 /* BuddiListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BuddiListView.swift; sourceTree = "<group>"; };
-		F61E9B272B2CFB8100635EB9 /* TODO.rtf */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; path = TODO.rtf; sourceTree = "<group>"; };
+		F69750452B7EFFD8009FC7F1 /* BuddiFileDocument.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BuddiFileDocument.swift; sourceTree = "<group>"; };
 		F6E163A62B71D19100DF2DB3 /* main.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = main.png; path = ../../../../Downloads/main.png; sourceTree = "<group>"; };
 		F6E163A92B71D21F00DF2DB3 /* Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
 		F6E163B12B71D61000DF2DB3 /* Quicksand-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Quicksand-Regular.ttf"; sourceTree = "<group>"; };
@@ -64,7 +64,6 @@
 		F61E9AEE2B2CD5E600635EB9 = {
 			isa = PBXGroup;
 			children = (
-				F61E9B272B2CFB8100635EB9 /* TODO.rtf */,
 				F61E9AF92B2CD5E600635EB9 /* Buddi */,
 				F61E9AF82B2CD5E600635EB9 /* Products */,
 			);
@@ -131,6 +130,7 @@
 			isa = PBXGroup;
 			children = (
 				F61E9B132B2CD96800635EB9 /* BuddiModel.swift */,
+				F69750452B7EFFD8009FC7F1 /* BuddiFileDocument.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -207,7 +207,6 @@
 				F6E163B72B71D79D00DF2DB3 /* Quicksand-Regular.ttf in Resources */,
 				F6E163A72B71D19100DF2DB3 /* main.png in Resources */,
 				F61E9AFF2B2CD5E700635EB9 /* Assets.xcassets in Resources */,
-				F61E9B282B2CFB8100635EB9 /* TODO.rtf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -219,6 +218,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				F61E9AFD2B2CD5E600635EB9 /* HomeView.swift in Sources */,
+				F69750462B7EFFD8009FC7F1 /* BuddiFileDocument.swift in Sources */,
 				F6E163AA2B71D21F00DF2DB3 /* Color.swift in Sources */,
 				F61E9B162B2CD97700635EB9 /* NoteView.swift in Sources */,
 				F61E9B122B2CD96000635EB9 /* ListViewModel.swift in Sources */,
@@ -355,7 +355,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 3;
 				DEVELOPMENT_ASSET_PATHS = "\"Buddi/Preview Content\"";
 				DEVELOPMENT_TEAM = TW65Z2CGW7;
 				ENABLE_PREVIEWS = YES;
@@ -372,7 +372,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0;
+				MARKETING_VERSION = 1.2;
 				PRODUCT_BUNDLE_IDENTIFIER = com.kbapps.Buddi;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -387,7 +387,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 3;
 				DEVELOPMENT_ASSET_PATHS = "\"Buddi/Preview Content\"";
 				DEVELOPMENT_TEAM = TW65Z2CGW7;
 				ENABLE_PREVIEWS = YES;
@@ -404,7 +404,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0;
+				MARKETING_VERSION = 1.2;
 				PRODUCT_BUNDLE_IDENTIFIER = com.kbapps.Buddi;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;

@@ -7,6 +7,7 @@ struct NoteView: View {
     @State private var todoItems: [Item] = [] // Changed to work with Item directly
     @State private var newItemText: String = ""
     @FocusState private var isInputFocused: Bool
+    @Environment(\.colorScheme) var colorScheme // Access the color scheme
 
     var body: some View {
         VStack {
@@ -14,7 +15,7 @@ struct NoteView: View {
                 Section(header: TextField("Add new item", text: $newItemText)
                             .textFieldStyle(PlainTextFieldStyle())
                             .font(.custom("Quicksand-Medium", size: 16))
-                            .foregroundColor(Color.customBackground)
+                            .foregroundColor(.primary)
                             .submitLabel(.done)
                             .focused($isInputFocused)
                             .onSubmit {
@@ -23,7 +24,7 @@ struct NoteView: View {
                             }
                             .cornerRadius(5)
                             .padding()
-                            .background(Color.white) // Match the TextField background to your custom color
+                            .background(colorScheme == .dark ? Color.customBackgroundDarker : Color.white) // Adapt background to theme
                 ) {
                     ForEach(todoItems, id: \.self) { item in
                         VStack(alignment: .leading, spacing: 0) {
@@ -33,8 +34,10 @@ struct NoteView: View {
                                 .padding(.top, 3)
                                 .padding(.bottom, 8)
                             
-                            Divider()
-                                .background(Color.gray.opacity(0.5)) // Slightly faded divider
+                            if colorScheme == .light {
+                                Divider()
+                                    .background(Color.gray.opacity(0.5))
+                            }
                         }
                         .background(Color.customBackground)
                      }
